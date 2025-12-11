@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>BodyWise — Camera</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="theme">
+  <header class="site-header">
+    <h1>BodyWise — Camera</h1>
+    <p class="tagline">Hold up the body part to your webcam — the model will identify it</p>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2>Instructions</h2>
+      <ol>
+        <li>Allow webcam access when prompted.</li>
+        <li>Hold the body part in front of the camera (head/face, arms/hands, legs/feet, eye, ears).</li>
+        <li>When the model detects a part above the confidence threshold, details appear on the right.</li>
+      </ol>
+      <p class="note">Tip: Good lighting and a plain background help detection.</p>
+    </section>
+
+    <section class="card split">
+      <div class="left">
+        <div id="webcam-container" class="webcam-box">Loading webcam...</div>
+        <div id="label-container" class="labels"></div>
+      </div>
+
+      <div class="right" id="infoPanel">
+        <h2 id="partName">No detection yet</h2>
+        <p id="anatomy"></p>
+        <p id="function"></p>
+        <p id="health"></p>
+        <p class="small">Confidence threshold: <span id="thresholdVal">0.70</span></p>
+      </div>
+    </section>
+
+    <section class="card">
+      <button class="btn" id="startBtn">Start Model</button>
+      <button class="btn ghost" id="stopBtn">Stop</button>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+
+  <script src="js/bodyinfo.js"></script>
+  <script src="js/camera.js"></script>
+</body>
+</html>
