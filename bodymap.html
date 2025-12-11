@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>BodyWise — Body Map</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="theme">
+  <header class="site-header">
+    <h1>BodyWise — Interactive Body Map</h1>
+    <p class="tagline">Click any part to learn anatomy, functions, common issues and prevention tips</p>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <div class="map-grid">
+        <!-- Simple SVG body outline. IDs match your classes (normalized). -->
+        <div class="svg-wrap">
+          <!-- Inline simplified SVG body - you can replace with a more detailed one later -->
+          <svg id="bodySVG" viewBox="0 0 200 600" xmlns="http://www.w3.org/2000/svg">
+            <!-- Torso / Head -->
+            <g id="head_face" class="body-part">
+              <ellipse cx="100" cy="60" rx="35" ry="40" />
+            </g>
+
+            <g id="eye" class="body-part">
+              <circle cx="88" cy="55" r="3" />
+              <circle cx="112" cy="55" r="3" />
+            </g>
+
+            <g id="ears" class="body-part">
+              <rect x="65" y="45" width="6" height="20" rx="3" />
+              <rect x="129" y="45" width="6" height="20" rx="3" />
+            </g>
+
+            <g id="torso" class="body-part">
+              <rect x="60" y="110" width="80" height="130" rx="20" />
+            </g>
+
+            <g id="arms_hands" class="body-part">
+              <rect x="15" y="110" width="30" height="120" rx="15" />
+              <rect x="155" y="110" width="30" height="120" rx="15" />
+            </g>
+
+            <g id="legs_feet" class="body-part">
+              <rect x="70" y="260" width="25" height="160" rx="12" />
+              <rect x="105" y="260" width="25" height="160" rx="12" />
+            </g>
+
+            <!-- small labels (optional) -->
+          </svg>
+        </div>
+
+        <div id="infoPanel" class="info-panel">
+          <h2 id="partName">Click a body part</h2>
+          <p id="anatomy"></p>
+          <p id="function"></p>
+          <p id="health"></p>
+          <div class="small">You can also use the camera page to auto-detect body parts.</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/bodyinfo.js"></script>
+  <script src="js/bodymap.js"></script>
+</body>
+</html>
