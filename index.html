@@ -1,59 +1,55 @@
-<div>Teachable Machine Image Model</div>
-<button type="button" onclick="init()">Start</button>
-<div id="webcam-container"></div>
-<div id="label-container"></div>
-<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
-<script type="text/javascript">
-    // More API functions here:
-    // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/image
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>BodyWise — Interactive Body Map</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="theme">
+  <header class="site-header">
+    <h1>BodyWise</h1>
+    <p class="tagline">Interactive body map + Teachable Machine — learn anatomy & better health habits</p>
+  </header>
 
-    // the link to your model provided by Teachable Machine export panel
-    const URL = "./my_model/";
+  <main class="container">
+    <section class="card">
+      <h2>About the project</h2>
+      <p>
+        BodyWise helps students and general learners explore human anatomy and learn healthy habits.
+        It combines a clickable body diagram with a Teachable Machine image model that recognizes body parts
+        via webcam (Head/Face, Arms/Hands, Legs/feet, Eye, Ears).
+      </p>
+      <h3>Problem it solves</h3>
+      <p>
+        Many learners memorize parts without connecting them to function and health. This app shows functions,
+        common issues, and prevention tips — making health education practical and memorable.
+      </p>
+    </section>
 
-    let model, webcam, labelContainer, maxPredictions;
+    <section class="card actions">
+      <h2>Try it</h2>
+      <div class="buttons">
+        <a class="btn" href="camera.html">Open Camera (Teachable Machine)</a>
+        <a class="btn" href="bodymap.html">Open Interactive Body Map</a>
+      </div>
+      <p class="note">Your Teachable Machine model must be in <code>/my_model/</code> for the camera page to work.</p>
+    </section>
 
-    // Load the image model and setup the webcam
-    async function init() {
-        const modelURL = URL + "model.json";
-        const metadataURL = URL + "metadata.json";
+    <section class="card">
+      <h2>How to present your project (Video)</h2>
+      <ol>
+        <li>Introduce the app and who benefits (10–20s)</li>
+        <li>Show training on Teachable Machine (short clip of training or the exported model screen) (20–30s)</li>
+        <li>Demonstrate the live site: camera detection + clicking the body map (30–50s)</li>
+        <li>Conclude with the problem it solves and future improvements (10–20s)</li>
+      </ol>
+      <p class="small">Record the website interaction with your phone screen or screen recorder. Save as MP4 and upload per class instructions.</p>
+    </section>
+  </main>
 
-        // load the model and metadata
-        // Refer to tmImage.loadFromFiles() in the API to support files from a file picker
-        // or files from your local hard drive
-        // Note: the pose library adds "tmImage" object to your window (window.tmImage)
-        model = await tmImage.load(modelURL, metadataURL);
-        maxPredictions = model.getTotalClasses();
-
-        // Convenience function to setup a webcam
-        const flip = true; // whether to flip the webcam
-        webcam = new tmImage.Webcam(200, 200, flip); // width, height, flip
-        await webcam.setup(); // request access to the webcam
-        await webcam.play();
-        window.requestAnimationFrame(loop);
-
-        // append elements to the DOM
-        document.getElementById("webcam-container").appendChild(webcam.canvas);
-        labelContainer = document.getElementById("label-container");
-        for (let i = 0; i < maxPredictions; i++) { // and class labels
-            labelContainer.appendChild(document.createElement("div"));
-        }
-    }
-
-    async function loop() {
-        webcam.update(); // update the webcam frame
-        await predict();
-        window.requestAnimationFrame(loop);
-    }
-
-    // run the webcam image through the image model
-    async function predict() {
-        // predict can take in an image, video or canvas html element
-        const prediction = await model.predict(webcam.canvas);
-        for (let i = 0; i < maxPredictions; i++) {
-            const classPrediction =
-                prediction[i].className + ": " + prediction[i].probability.toFixed(2);
-            labelContainer.childNodes[i].innerHTML = classPrediction;
-        }
-    }
-</script>
+  <footer class="site-footer">
+    <p>Project for school · Hosted on GitHub Pages</p>
+  </footer>
+</body>
+</html>
