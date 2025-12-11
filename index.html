@@ -1,55 +1,161 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>BodyWise — Interactive Body Map</title>
-  <link rel="stylesheet" href="css/styles.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Human Body Interactive Health Map</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            background: #e7f7ec;
+            color: #2a4d32;
+        }
+
+        header {
+            background: #2e8b57;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            border-bottom-left-radius: 40px;
+            border-bottom-right-radius: 40px;
+            animation: slideDown 1s ease-out;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-40px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2.8rem;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 40px auto;
+        }
+
+        .section {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            animation: fadeIn 1.2s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section h2 {
+            margin-top: 0;
+            color: #2e8b57;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 15px 22px;
+            background: #2e8b57;
+            color: white;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #256f46;
+            transform: scale(1.05);
+        }
+
+        /* Micro animation icons */
+        .icon-row {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px 0;
+        }
+
+        .icon {
+            width: 90px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+    </style>
 </head>
-<body class="theme">
-  <header class="site-header">
-    <h1>BodyWise</h1>
-    <p class="tagline">Interactive body map + Teachable Machine — learn anatomy & better health habits</p>
-  </header>
 
-  <main class="container">
-    <section class="card">
-      <h2>About the project</h2>
-      <p>
-        BodyWise helps students and general learners explore human anatomy and learn healthy habits.
-        It combines a clickable body diagram with a Teachable Machine image model that recognizes body parts
-        via webcam (Head/Face, Arms/Hands, Legs/feet, Eye, Ears).
-      </p>
-      <h3>Problem it solves</h3>
-      <p>
-        Many learners memorize parts without connecting them to function and health. This app shows functions,
-        common issues, and prevention tips — making health education practical and memorable.
-      </p>
-    </section>
+<body>
 
-    <section class="card actions">
-      <h2>Try it</h2>
-      <div class="buttons">
-        <a class="btn" href="camera.html">Open Camera (Teachable Machine)</a>
-        <a class="btn" href="bodymap.html">Open Interactive Body Map</a>
-      </div>
-      <p class="note">Your Teachable Machine model must be in <code>/my_model/</code> for the camera page to work.</p>
-    </section>
+<header>
+    <h1>Human Body Interactive Health Map</h1>
+    <p>A tool to explore anatomy, movement, and health.</p>
+</header>
 
-    <section class="card">
-      <h2>How to present your project (Video)</h2>
-      <ol>
-        <li>Introduce the app and who benefits (10–20s)</li>
-        <li>Show training on Teachable Machine (short clip of training or the exported model screen) (20–30s)</li>
-        <li>Demonstrate the live site: camera detection + clicking the body map (30–50s)</li>
-        <li>Conclude with the problem it solves and future improvements (10–20s)</li>
-      </ol>
-      <p class="small">Record the website interaction with your phone screen or screen recorder. Save as MP4 and upload per class instructions.</p>
-    </section>
-  </main>
+<div class="container">
 
-  <footer class="site-footer">
-    <p>Project for school · Hosted on GitHub Pages</p>
-  </footer>
+    <!-- Micro animated icons -->
+    <div class="icon-row">
+        <img class="icon" src="https://cdn-icons-png.flaticon.com/512/2966/2966489.png">
+        <img class="icon" src="https://cdn-icons-png.flaticon.com/512/2966/2966534.png">
+        <img class="icon" src="https://cdn-icons-png.flaticon.com/512/2966/2966438.png">
+    </div>
+
+    <div class="section">
+        <h2>❗ What Is This Project About?</h2>
+        <p>
+            This website is designed to help people learn about different parts of the human body, 
+            how they work, and how to keep them healthy. It includes an interactive diagram and an AI-powered 
+            Teachable Machine model that recognizes different body parts using your camera.
+        </p>
+        <p>
+            The goal is to make learning anatomy simple, engaging, and helpful for students, teachers, or anyone curious about the human body.
+        </p>
+    </div>
+
+    <div class="section">
+        <h2>📸 Try the Body Detection AI</h2>
+        <p>
+            This feature uses a Teachable Machine Image Model to identify:
+        </p>
+        <ul>
+            <li>Head / Face</li>
+            <li>Eye</li>
+            <li>Ears</li>
+            <li>Arms / Hands</li>
+            <li>Legs / Feet</li>
+        </ul>
+        <p>Click the button below to test your model.</p>
+        <a href="camera.html" class="btn">Open Camera Detection</a>
+    </div>
+
+    <div class="section">
+        <h2>🧍 Explore the Interactive Body Map</h2>
+        <p>
+            Click different parts of the body to learn:
+        </p>
+        <ul>
+            <li>Basic Anatomy</li>
+            <li>What each part does</li>
+            <li>Common health concerns</li>
+            <li>Healthy habits that support that area</li>
+        </ul>
+        <a href="bodymap.html" class="btn">Open Body Diagram</a>
+    </div>
+
+</div>
+
 </body>
 </html>
